@@ -18,6 +18,7 @@ namespace Sreerastu_proj
 {
     public class Startup
     {
+        //Startup.cs
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
