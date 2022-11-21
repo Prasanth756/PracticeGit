@@ -1,0 +1,43 @@
+﻿@model IEnumerable <SreerastuMVC.Models.TBL_SubscriptionType>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+@using (Html.BeginForm("Index", "Substription"))
+{
+    <table align="center"></table>
+    <h3 align="center"></h3>
+    <table class="table table-bordered">
+        <tr>
+            <th>SubscriptionTypeID</th>
+            <th>SubscriptionType</th>
+            <th>Amount</th>
+        </tr>
+        <tr>
+            @Html.ActionLink("Insert", "Insert")
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(ModelItem => item.SubscriptionTypeID)</td>
+                
+                <td>@Html.DisplayFor(ModelItem => item.SubscriptionType)</td>
+                
+                <td>@Html.DisplayFor(ModelItem => item.Amount)</td>
+                
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { ID = item.SubscriptionTypeID })
+                    @Html.ActionLink("Details", "Details", new { ID = item.SubscriptionTypeID })
+                    @Html.ActionLink("Delete", "Delete", new { ID = item.SubscriptionTypeID })
+
+
+                </td>
+            </tr>
+
+        }
+    </table>
+
+}
+
+

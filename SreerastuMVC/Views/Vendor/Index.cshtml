@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SreerastuMVC.Models.TBL_VendorStatus>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+@using (Html.BeginForm("Index", "Vendor"))
+ { 
+
+ <table align="center"></table>
+ <h3 align="center"></h3>
+ <table class="table table-bordered">
+    <tr>
+        <th>StatusID</th>
+        <th>Status</th>
+
+    </tr>
+    <tr>
+        @Html.ActionLink("Insert", "Insert")
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(ModelItem =>item.StatusID)</td>
+
+            <td>@Html.DisplayFor(ModelItem => item.Status)</td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { ID = item.StatusID })
+                @Html.ActionLink("Details", "Details", new { ID = item.StatusID})
+                @Html.ActionLink("Delete", "Delete", new { ID = item.StatusID })
+
+
+            </td>
+        </tr>
+
+     }
+</table>
+
+ }

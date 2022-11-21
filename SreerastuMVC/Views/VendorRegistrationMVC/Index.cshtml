@@ -1,0 +1,193 @@
+﻿@model IEnumerable<SreerastuMVC.Models.TBL_VendorRegistration>
+
+@{ ViewBag.Title = "Index"; }
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Insert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorBusinessName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessStartedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessExperience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlternateContactNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactPerson)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessRegistrationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubscriptionExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorRegistrationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDProof)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressProof)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SampleWorks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessLogo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VerifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_Employee.EmpFName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_Employee1.EmpFName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_SubscriptionType.SubscriptionType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_VendorCategory.VCategoryDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_VendorStatus.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VendorUserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VendorPassword)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VendorBusinessName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BusinessStartedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BusinessExperience)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ContactNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AlternateContactNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ContactPerson)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.City)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.State)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Location)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BusinessRegistrationDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SubscriptionExpiryDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VendorRegistrationDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDProof)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AddressProof)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SampleWorks)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BusinessLogo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VerifiedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ApprovedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TBL_Employee.EmpFName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TBL_Employee1.EmpFName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TBL_SubscriptionType.SubscriptionType)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TBL_VendorCategory.VCategoryDescription)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TBL_VendorStatus.Status)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.VendorID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.VendorID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.VendorID })
+    </td>
+</tr>}
+
+</table>

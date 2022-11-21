@@ -1,0 +1,78 @@
+﻿@model SreerastuMVC.Models.TBL_VendorRegistration
+@using (Html.BeginForm("Insert", "Vendor"))
+{
+    @Html.AntiForgeryToken()
+
+    <table align="center">
+        <tr>
+            <td>@Html.Label("VendorID")</td>
+            <td>@Html.TextBox("VendorID")</td>
+        </tr>
+        <tr><td>@Html.Label("FName")</td><td>@Html.TextBox("FName")</td></tr>
+        <tr><td>@Html.Label("LName")</td><td>@Html.TextBox("LName")</td></tr>
+        <tr><td>@Html.Label("VendorUserName")</td><td>@Html.TextBox("VendorUserName")</td></tr>
+        <tr><td>@Html.Label("VendorPassword")</td><td>@Html.Password("VendorPassword")</td></tr>
+        <tr><td>@Html.Label("VendorBusinessName")</td><td>@Html.TextBox("VendorBusinessName")</td></tr>
+        <tr>
+            <td>@Html.Label("VendorCategory")</td>
+            <td>
+                @Html.DropDownList("VendorCategory", new SelectList(ViewBag.VendorCategory), new { id = "ddl_VendorCategory" })
+                @Html.TextBox("VendorCategoryID")
+            </td>
+        </tr>
+        <tr><td>@Html.Label("BusinessStartedDate")</td><td><input id="BusinessStartedDate" name="BusinessStartedDate" type="date" value="" /></td></tr>
+        <tr><td>@Html.Label("BusinessExperience")</td><td>@Html.TextBox("BusinessExperience")</td></tr>
+        <tr><td>@Html.Label("ContactNumber")</td><td>@Html.TextBox("ContactNumber")</td></tr>
+        <tr><td>@Html.Label("AlternateContactNumber")</td><td>@Html.TextBox("AlternateContactNumber")</td></tr>
+        <tr><td>@Html.Label("ContactPerson")</td><td>@Html.TextBox("ContactPerson")</td></tr>
+        <tr><td>@Html.Label("Email")</td><td>@Html.TextBox("Email")</td></tr>
+        <tr><td>@Html.Label("City")</td><td>@Html.TextBox("City")</td></tr>
+        <tr><td>@Html.Label("State")</td><td>@Html.TextBox("State")</td></tr>
+        <tr><td>@Html.Label("Location")</td><td>@Html.TextBox("Location")</td></tr>
+        <tr>
+            <td>@Html.Label("BusinessRegistrationDate")</td>
+            <td>
+                <input id="BusinessRegistrationDate" name="BusinessRegistrationDate" type="date" value="" />
+            </td>
+        </tr>
+        <tr><td>@Html.Label("StatusID")</td><td>@Html.TextBox("StatusID")</td></tr>
+        <tr><td>@Html.Label("SubscriptionTypeID")</td><td>@Html.TextBox("SubscriptionTypeID")</td></tr>
+        <tr>
+            <td>@Html.Label("SubscriptionExpiryDate")</td>
+            <td>
+                <input id="SubscriptionExpiryDate" name="SubscriptionExpiryDate" type="date" value="" />
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("VendorRegistrationDate")</td>
+            <td>
+
+                <input id="VendorRegistrationDate" name="VendorRegistrationDate" type="date" value="" />
+            </td>
+        </tr>
+        <tr><td>@Html.Label("IDProof")</td><td>@Html.TextBox("IDProof")</td></tr>
+        <tr><td>@Html.Label("AddressProof")</td><td>@Html.TextBox("AddressProof")</td></tr>
+        <tr><td>@Html.Label("SampleWorks")</td><td>@Html.TextBox("SampleWorks")</td></tr>
+        <tr><td>@Html.Label("BusinessLogo")</td><td>@Html.TextBox("BusinessLogo")</td></tr>
+        <tr><td>@Html.Label("VerifiedBy")</td><td>@Html.TextBox("VerifiedBy")</td></tr>
+        <tr><td>@Html.Label("ApprovedBy")</td><td>@Html.TextBox("ApprovedBy")</td></tr>
+        <tr>
+            <td>@Html.Label("VerifiedDate")</td>
+            <td>
+                <input id="VerifiedDate" name="VerifiedDate" type="date" value="" />
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("ApprovedDate")</td>
+            <td>
+                <input id="ApprovedDate" name="ApprovedDate" type="date" value="" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center"><input type="submit" value="Insert" /></td>
+        </tr>
+
+    </table>
+    @Html.ActionLink("BackToIndex", "Index")
+}
+

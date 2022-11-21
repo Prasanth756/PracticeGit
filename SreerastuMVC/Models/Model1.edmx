@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SreerastuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_CustomerRegistration">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerFName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerLName" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerUserName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerPassword" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_Employee">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpFName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpLName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpUserName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpPassword" Type="varchar" MaxLength="50" />
+          <Property Name="EmpDOB" Type="date" />
+          <Property Name="EmpContactNumber" Type="varchar" MaxLength="20" />
+          <Property Name="EmpEmail" Type="varchar" MaxLength="50" />
+          <Property Name="EmpRole" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_SubscriptionType">
+          <Key>
+            <PropertyRef Name="SubscriptionTypeID" />
+          </Key>
+          <Property Name="SubscriptionTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubscriptionType" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_VendorCategory">
+          <Key>
+            <PropertyRef Name="VendorCategoryID" />
+          </Key>
+          <Property Name="VendorCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VCategoryDescription" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_VendorRegistration">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="varchar" MaxLength="50" />
+          <Property Name="LName" Type="varchar" MaxLength="50" />
+          <Property Name="VendorUserName" Type="varchar" MaxLength="50" />
+          <Property Name="VendorPassword" Type="varchar" MaxLength="50" />
+          <Property Name="VendorBusinessName" Type="varchar" MaxLength="50" />
+          <Property Name="VendorCategoryID" Type="int" />
+          <Property Name="BusinessStartedDate" Type="date" />
+          <Property Name="BusinessExperience" Type="int" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="20" />
+          <Property Name="AlternateContactNumber" Type="varchar" MaxLength="20" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="BusinessRegistrationDate" Type="date" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="SubscriptionTypeID" Type="int" />
+          <Property Name="SubscriptionExpiryDate" Type="date" />
+          <Property Name="VendorRegistrationDate" Type="date" />
+          <Property Name="IDProof" Type="varchar" MaxLength="50" />
+          <Property Name="AddressProof" Type="varchar" MaxLength="50" />
+          <Property Name="SampleWorks" Type="varchar" MaxLength="50" />
+          <Property Name="BusinessLogo" Type="varchar" MaxLength="50" />
+          <Property Name="VerifiedBy" Type="int" />
+          <Property Name="ApprovedBy" Type="int" />
+          <Property Name="VerifiedDate" Type="date" />
+          <Property Name="ApprovedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="TBL_VendorStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_VendorType">
+          <Key>
+            <PropertyRef Name="VendorTypeID" />
+          </Key>
+          <Property Name="VendorTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__TBL_Vendo__Appro__33D4B598">
+          <End Role="TBL_Employee" Type="Self.TBL_Employee" Multiplicity="0..1" />
+          <End Role="TBL_VendorRegistration" Type="Self.TBL_VendorRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="TBL_VendorRegistration">
+              <PropertyRef Name="ApprovedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_Vendo__Statu__30F848ED">
+          <End Role="TBL_VendorStatus" Type="Self.TBL_VendorStatus" Multiplicity="0..1" />
+          <End Role="TBL_VendorRegistration" Type="Self.TBL_VendorRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_VendorStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="TBL_VendorRegistration">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_Vendo__Subsc__31EC6D26">
+          <End Role="TBL_SubscriptionType" Type="Self.TBL_SubscriptionType" Multiplicity="0..1" />
+          <End Role="TBL_VendorRegistration" Type="Self.TBL_VendorRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_SubscriptionType">
+              <PropertyRef Name="SubscriptionTypeID" />
+            </Principal>
+            <Dependent Role="TBL_VendorRegistration">
+              <PropertyRef Name="SubscriptionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_Vendo__Vendo__300424B4">
+          <End Role="TBL_VendorCategory" Type="Self.TBL_VendorCategory" Multiplicity="0..1" />
+          <End Role="TBL_VendorRegistration" Type="Self.TBL_VendorRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_VendorCategory">
+              <PropertyRef Name="VendorCategoryID" />
+            </Principal>
+            <Dependent Role="TBL_VendorRegistration">
+              <PropertyRef Name="VendorCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_Vendo__Verif__32E0915F">
+          <End Role="TBL_Employee" Type="Self.TBL_Employee" Multiplicity="0..1" />
+          <End Role="TBL_VendorRegistration" Type="Self.TBL_VendorRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="TBL_VendorRegistration">
+              <PropertyRef Name="VerifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SreerastuModelStoreContainer">
+          <EntitySet Name="TBL_CustomerRegistration" EntityType="Self.TBL_CustomerRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_Employee" EntityType="Self.TBL_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_SubscriptionType" EntityType="Self.TBL_SubscriptionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_UserType" EntityType="Self.TBL_UserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_VendorCategory" EntityType="Self.TBL_VendorCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_VendorRegistration" EntityType="Self.TBL_VendorRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_VendorStatus" EntityType="Self.TBL_VendorStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_VendorType" EntityType="Self.TBL_VendorType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TBL_Vendo__Appro__33D4B598" Association="Self.FK__TBL_Vendo__Appro__33D4B598">
+            <End Role="TBL_Employee" EntitySet="TBL_Employee" />
+            <End Role="TBL_VendorRegistration" EntitySet="TBL_VendorRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_Vendo__Statu__30F848ED" Association="Self.FK__TBL_Vendo__Statu__30F848ED">
+            <End Role="TBL_VendorStatus" EntitySet="TBL_VendorStatus" />
+            <End Role="TBL_VendorRegistration" EntitySet="TBL_VendorRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_Vendo__Subsc__31EC6D26" Association="Self.FK__TBL_Vendo__Subsc__31EC6D26">
+            <End Role="TBL_SubscriptionType" EntitySet="TBL_SubscriptionType" />
+            <End Role="TBL_VendorRegistration" EntitySet="TBL_VendorRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_Vendo__Vendo__300424B4" Association="Self.FK__TBL_Vendo__Vendo__300424B4">
+            <End Role="TBL_VendorCategory" EntitySet="TBL_VendorCategory" />
+            <End Role="TBL_VendorRegistration" EntitySet="TBL_VendorRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_Vendo__Verif__32E0915F" Association="Self.FK__TBL_Vendo__Verif__32E0915F">
+            <End Role="TBL_Employee" EntitySet="TBL_Employee" />
+            <End Role="TBL_VendorRegistration" EntitySet="TBL_VendorRegistration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SreerastuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_CustomerRegistration">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerFName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerLName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_Employee">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpFName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpLName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpDOB" Type="DateTime" Precision="0" />
+          <Property Name="EmpContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmpEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_VendorRegistration" Relationship="Self.FK__TBL_Vendo__Appro__33D4B598" FromRole="TBL_Employee" ToRole="TBL_VendorRegistration" />
+          <NavigationProperty Name="TBL_VendorRegistration1" Relationship="Self.FK__TBL_Vendo__Verif__32E0915F" FromRole="TBL_Employee" ToRole="TBL_VendorRegistration" />
+        </EntityType>
+        <EntityType Name="TBL_SubscriptionType">
+          <Key>
+            <PropertyRef Name="SubscriptionTypeID" />
+          </Key>
+          <Property Name="SubscriptionTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubscriptionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Int32" />
+          <NavigationProperty Name="TBL_VendorRegistration" Relationship="Self.FK__TBL_Vendo__Subsc__31EC6D26" FromRole="TBL_SubscriptionType" ToRole="TBL_VendorRegistration" />
+        </EntityType>
+        <EntityType Name="TBL_UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_VendorCategory">
+          <Key>
+            <PropertyRef Name="VendorCategoryID" />
+          </Key>
+          <Property Name="VendorCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VCategoryDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_VendorRegistration" Relationship="Self.FK__TBL_Vendo__Vendo__300424B4" FromRole="TBL_VendorCategory" ToRole="TBL_VendorRegistration" />
+        </EntityType>
+        <EntityType Name="TBL_VendorRegistration">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorBusinessName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorCategoryID" Type="Int32" />
+          <Property Name="BusinessStartedDate" Type="DateTime" Precision="0" />
+          <Property Name="BusinessExperience" Type="Int32" />
+          <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AlternateContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessRegistrationDate" Type="DateTime" Precision="0" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="SubscriptionTypeID" Type="Int32" />
+          <Property Name="SubscriptionExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="VendorRegistrationDate" Type="DateTime" Precision="0" />
+          <Property Name="IDProof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddressProof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SampleWorks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessLogo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VerifiedBy" Type="Int32" />
+          <Property Name="ApprovedBy" Type="Int32" />
+          <Property Name="VerifiedDate" Type="DateTime" Precision="0" />
+          <Property Name="ApprovedDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TBL_Employee" Relationship="Self.FK__TBL_Vendo__Appro__33D4B598" FromRole="TBL_VendorRegistration" ToRole="TBL_Employee" />
+          <NavigationProperty Name="TBL_Employee1" Relationship="Self.FK__TBL_Vendo__Verif__32E0915F" FromRole="TBL_VendorRegistration" ToRole="TBL_Employee" />
+          <NavigationProperty Name="TBL_SubscriptionType" Relationship="Self.FK__TBL_Vendo__Subsc__31EC6D26" FromRole="TBL_VendorRegistration" ToRole="TBL_SubscriptionType" />
+          <NavigationProperty Name="TBL_VendorCategory" Relationship="Self.FK__TBL_Vendo__Vendo__300424B4" FromRole="TBL_VendorRegistration" ToRole="TBL_VendorCategory" />
+          <NavigationProperty Name="TBL_VendorStatus" Relationship="Self.FK__TBL_Vendo__Statu__30F848ED" FromRole="TBL_VendorRegistration" ToRole="TBL_VendorStatus" />
+        </EntityType>
+        <EntityType Name="TBL_VendorStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_VendorRegistration" Relationship="Self.FK__TBL_Vendo__Statu__30F848ED" FromRole="TBL_VendorStatus" ToRole="TBL_VendorRegistration" />
+        </EntityType>
+        <EntityType Name="TBL_VendorType">
+          <Key>
+            <PropertyRef Name="VendorTypeID" />
+          </Key>
+          <Property Name="VendorTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__TBL_Vendo__Appro__33D4B598">
+          <End Role="TBL_Employee" Type="Self.TBL_Employee" Multiplicity="0..1" />
+          <End Role="TBL_VendorRegistration" Type="Self.TBL_VendorRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="TBL_VendorRegistration">
+              <PropertyRef Name="ApprovedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_Vendo__Verif__32E0915F">
+          <End Role="TBL_Employee" Type="Self.TBL_Employee" Multiplicity="0..1" />
+          <End Role="TBL_VendorRegistration" Type="Self.TBL_VendorRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Employee">
+              <PropertyRef Name="EmpID" />
+            </Principal>
+            <Dependent Role="TBL_VendorRegistration">
+              <PropertyRef Name="VerifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_Vendo__Subsc__31EC6D26">
+          <End Role="TBL_SubscriptionType" Type="Self.TBL_SubscriptionType" Multiplicity="0..1" />
+          <End Role="TBL_VendorRegistration" Type="Self.TBL_VendorRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_SubscriptionType">
+              <PropertyRef Name="SubscriptionTypeID" />
+            </Principal>
+            <Dependent Role="TBL_VendorRegistration">
+              <PropertyRef Name="SubscriptionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_Vendo__Vendo__300424B4">
+          <End Role="TBL_VendorCategory" Type="Self.TBL_VendorCategory" Multiplicity="0..1" />
+          <End Role="TBL_VendorRegistration" Type="Self.TBL_VendorRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_VendorCategory">
+              <PropertyRef Name="VendorCategoryID" />
+            </Principal>
+            <Dependent Role="TBL_VendorRegistration">
+              <PropertyRef Name="VendorCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_Vendo__Statu__30F848ED">
+          <End Role="TBL_VendorStatus" Type="Self.TBL_VendorStatus" Multiplicity="0..1" />
+          <End Role="TBL_VendorRegistration" Type="Self.TBL_VendorRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_VendorStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="TBL_VendorRegistration">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SreerastuEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_CustomerRegistration" EntityType="Self.TBL_CustomerRegistration" />
+          <EntitySet Name="TBL_Employee" EntityType="Self.TBL_Employee" />
+          <EntitySet Name="TBL_SubscriptionType" EntityType="Self.TBL_SubscriptionType" />
+          <EntitySet Name="TBL_UserType" EntityType="Self.TBL_UserType" />
+          <EntitySet Name="TBL_VendorCategory" EntityType="Self.TBL_VendorCategory" />
+          <EntitySet Name="TBL_VendorRegistration" EntityType="Self.TBL_VendorRegistration" />
+          <EntitySet Name="TBL_VendorStatus" EntityType="Self.TBL_VendorStatus" />
+          <EntitySet Name="TBL_VendorType" EntityType="Self.TBL_VendorType" />
+          <AssociationSet Name="FK__TBL_Vendo__Appro__33D4B598" Association="Self.FK__TBL_Vendo__Appro__33D4B598">
+            <End Role="TBL_Employee" EntitySet="TBL_Employee" />
+            <End Role="TBL_VendorRegistration" EntitySet="TBL_VendorRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_Vendo__Verif__32E0915F" Association="Self.FK__TBL_Vendo__Verif__32E0915F">
+            <End Role="TBL_Employee" EntitySet="TBL_Employee" />
+            <End Role="TBL_VendorRegistration" EntitySet="TBL_VendorRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_Vendo__Subsc__31EC6D26" Association="Self.FK__TBL_Vendo__Subsc__31EC6D26">
+            <End Role="TBL_SubscriptionType" EntitySet="TBL_SubscriptionType" />
+            <End Role="TBL_VendorRegistration" EntitySet="TBL_VendorRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_Vendo__Vendo__300424B4" Association="Self.FK__TBL_Vendo__Vendo__300424B4">
+            <End Role="TBL_VendorCategory" EntitySet="TBL_VendorCategory" />
+            <End Role="TBL_VendorRegistration" EntitySet="TBL_VendorRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_Vendo__Statu__30F848ED" Association="Self.FK__TBL_Vendo__Statu__30F848ED">
+            <End Role="TBL_VendorStatus" EntitySet="TBL_VendorStatus" />
+            <End Role="TBL_VendorRegistration" EntitySet="TBL_VendorRegistration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SreerastuModelStoreContainer" CdmEntityContainer="SreerastuEntities1">
+          <EntitySetMapping Name="TBL_CustomerRegistration">
+            <EntityTypeMapping TypeName="SreerastuModel.TBL_CustomerRegistration">
+              <MappingFragment StoreEntitySet="TBL_CustomerRegistration">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerFName" ColumnName="CustomerFName" />
+                <ScalarProperty Name="CustomerLName" ColumnName="CustomerLName" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CustomerUserName" ColumnName="CustomerUserName" />
+                <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_Employee">
+            <EntityTypeMapping TypeName="SreerastuModel.TBL_Employee">
+              <MappingFragment StoreEntitySet="TBL_Employee">
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="EmpFName" ColumnName="EmpFName" />
+                <ScalarProperty Name="EmpLName" ColumnName="EmpLName" />
+                <ScalarProperty Name="EmpUserName" ColumnName="EmpUserName" />
+                <ScalarProperty Name="EmpPassword" ColumnName="EmpPassword" />
+                <ScalarProperty Name="EmpDOB" ColumnName="EmpDOB" />
+                <ScalarProperty Name="EmpContactNumber" ColumnName="EmpContactNumber" />
+                <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+                <ScalarProperty Name="EmpRole" ColumnName="EmpRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SubscriptionType">
+            <EntityTypeMapping TypeName="SreerastuModel.TBL_SubscriptionType">
+              <MappingFragment StoreEntitySet="TBL_SubscriptionType">
+                <ScalarProperty Name="SubscriptionTypeID" ColumnName="SubscriptionTypeID" />
+                <ScalarProperty Name="SubscriptionType" ColumnName="SubscriptionType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_UserType">
+            <EntityTypeMapping TypeName="SreerastuModel.TBL_UserType">
+              <MappingFragment StoreEntitySet="TBL_UserType">
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_VendorCategory">
+            <EntityTypeMapping TypeName="SreerastuModel.TBL_VendorCategory">
+              <MappingFragment StoreEntitySet="TBL_VendorCategory">
+                <ScalarProperty Name="VendorCategoryID" ColumnName="VendorCategoryID" />
+                <ScalarProperty Name="VCategoryDescription" ColumnName="VCategoryDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_VendorRegistration">
+            <EntityTypeMapping TypeName="SreerastuModel.TBL_VendorRegistration">
+              <MappingFragment StoreEntitySet="TBL_VendorRegistration">
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="VendorUserName" ColumnName="VendorUserName" />
+                <ScalarProperty Name="VendorPassword" ColumnName="VendorPassword" />
+                <ScalarProperty Name="VendorBusinessName" ColumnName="VendorBusinessName" />
+                <ScalarProperty Name="VendorCategoryID" ColumnName="VendorCategoryID" />
+                <ScalarProperty Name="BusinessStartedDate" ColumnName="BusinessStartedDate" />
+                <ScalarProperty Name="BusinessExperience" ColumnName="BusinessExperience" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="AlternateContactNumber" ColumnName="AlternateContactNumber" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="BusinessRegistrationDate" ColumnName="BusinessRegistrationDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="SubscriptionTypeID" ColumnName="SubscriptionTypeID" />
+                <ScalarProperty Name="SubscriptionExpiryDate" ColumnName="SubscriptionExpiryDate" />
+                <ScalarProperty Name="VendorRegistrationDate" ColumnName="VendorRegistrationDate" />
+                <ScalarProperty Name="IDProof" ColumnName="IDProof" />
+                <ScalarProperty Name="AddressProof" ColumnName="AddressProof" />
+                <ScalarProperty Name="SampleWorks" ColumnName="SampleWorks" />
+                <ScalarProperty Name="BusinessLogo" ColumnName="BusinessLogo" />
+                <ScalarProperty Name="VerifiedBy" ColumnName="VerifiedBy" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="VerifiedDate" ColumnName="VerifiedDate" />
+                <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_VendorStatus">
+            <EntityTypeMapping TypeName="SreerastuModel.TBL_VendorStatus">
+              <MappingFragment StoreEntitySet="TBL_VendorStatus">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_VendorType">
+            <EntityTypeMapping TypeName="SreerastuModel.TBL_VendorType">
+              <MappingFragment StoreEntitySet="TBL_VendorType">
+                <ScalarProperty Name="VendorTypeID" ColumnName="VendorTypeID" />
+                <ScalarProperty Name="VendorType" ColumnName="VendorType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
