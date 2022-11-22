@@ -18,9 +18,8 @@ namespace Sreerastu_proj
 {
     public class Startup
     {
-        //Startup.cs
-        //hello
-        //hai
+       
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
