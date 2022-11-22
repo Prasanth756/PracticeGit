@@ -31,7 +31,7 @@ namespace Sreerastu_proj
         {
             services.AddControllers();
             services.AddDbContext<SreerastuContext>(item => item.UseSqlServer(Configuration.GetConnectionString("BlogDBConnection")));
-            services.AddScoped<IPostRepository, PostRepository>();
+            //services.AddScoped<IPostRepository, PostRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
